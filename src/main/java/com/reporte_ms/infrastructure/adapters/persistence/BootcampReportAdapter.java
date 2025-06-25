@@ -18,4 +18,10 @@ public class BootcampReportAdapter implements IBootcampReportPersistencePort {
         return bootcampReportRepository.save(bootcampReportMapper.toBootcampReportEntity(bootcampReport)).then();
     }
 
+    @Override
+    public Mono<BootcampReport> findBootcampWithMostPersons(String token) {
+        return bootcampReportRepository.findFirstByOrderByQuantityPersonsDesc()
+                .map(bootcampReportMapper::toBootcampReport);
+    }
+
 }

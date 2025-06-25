@@ -6,4 +6,6 @@ import reactor.core.publisher.Mono;
 public interface IBootcampReportServicePort {
 
     Mono<Void> saveBootcampReport(BootcampReport bootcampReport);
+    Mono<BootcampReport> getBootcampWithMostPersons(String token);
+
 }

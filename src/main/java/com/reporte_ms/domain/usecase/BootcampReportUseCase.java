@@ -18,4 +18,10 @@ public class BootcampReportUseCase implements IBootcampReportServicePort {
         bootcampReport.setTimesTamp(LocalDateTime.now());
         return bootcampReportPersistencePort.saveBootcampReport(bootcampReport);
     }
+
+    @Override
+    public Mono<BootcampReport> getBootcampWithMostPersons(String token) {
+        return bootcampReportPersistencePort.findBootcampWithMostPersons(token);
+
+    }
 }

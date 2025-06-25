@@ -8,5 +8,7 @@ import org.mapstruct.Mapper;
 public interface IBootcampInfraMapper {
 
     BootcampReport toBootcampReport(BootcampReportRequestDTO bootcampReportRequestDTO);
+    BootcampReportRequestDTO toBootcampReportDTO(BootcampReport model);
+
 
 }

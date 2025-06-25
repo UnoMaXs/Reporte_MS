@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "bootcamp_reports")
+@Document(collection = "reportesdb")
 public class BootcampReportEntity {
 
     @Id

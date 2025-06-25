@@ -23,10 +23,15 @@ public class BootcampReportHandler {
                     BootcampReport bootcampReport = bootcampInfraMapper.toBootcampReport(dto);
                     return bootcampReportServicePort.saveBootcampReport(bootcampReport);
                 })
-                .flatMap(savedReport ->
-                        ServerResponse.ok()
-                                .bodyValue(savedReport)
-                );
+                .then(ServerResponse.ok().build());
+    }
+
+    public Mono<ServerResponse> getMostPopularBootcamp(ServerRequest request) {
+        String token = request.headers().firstHeader("Authorization");
+
+        return bootcampReportServicePort.getBootcampWithMostPersons(token)
+                .flatMap(report -> ServerResponse.ok().bodyValue(report))
+                .switchIfEmpty(ServerResponse.notFound().build());
     }
 
 }
